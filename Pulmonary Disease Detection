@@ -1,0 +1,43 @@
+1. Introduction
+This project presents an automated diagnostic tool for detecting pulmonary diseases (such as Pneumonia, COVID-19, and Tuberculosis) from Chest X-ray (CXR) images. Medical image interpretation is often challenged by low contrast, overlapping anatomical structures, and varying pathology sizes.
+To overcome these hurdles, this project implements a CBAM-Enhanced Attention U-Net. By combining the structural strengths of the U-Net architecture with advanced attention mechanisms, the model can precisely localize abnormalities and ignore non-informative regions (like ribs or background noise), leading to more reliable clinical predictions.
+
+2. Technical Architecture
+The model architecture is a hybrid design that integrates two powerful attention modules into the traditional U-Net "encoder-decoder" structure.
+
+A. The Backbone: Attention U-Net
+Unlike a standard U-Net, this architecture uses Attention Gates (AGs) in the skip connections.
+
+The Problem: Standard skip connections transfer a lot of redundant low-level spatial information.
+
+The Solution: Attention Gates use the features from the deeper "gating" signal to filter the skip connection features. This ensures that only relevant spatial information is passed to the decoder, reducing false positives in segmentation and classification.
+
+B. The Refiner: Convolutional Block Attention Module (CBAM)
+Each encoder block is enhanced with a CBAM unit, which processes features in two sequential steps:
+
+Channel Attention: The model learns "what" is important by identifying which feature maps (channels) contain the most significant disease markers.
+
+Spatial Attention: The model learns "where" to look by focusing on the most informative pixels within those feature maps.
+
+Key Features of the Implementation
+Data Leakage Prevention: The dataset is split patient-wise. This ensures that images from the same patient do not appear in both the training and testing sets, providing a true measure of the model's generalizability.
+
+Custom Evaluation: Beyond standard accuracy, the project uses F1-Score and AUC-ROC to handle the inherent class imbalance found in medical datasets.
+
+Threshold Optimization: The system includes a post-training optimization step to find the "Best Threshold" for binary classification, maximizing the balance between Sensitivity and Specificity.
+
+No Data Augmentation: Per strict experimental constraints, the model relies on the raw integrity of the data to learn robust features without artificial noise.
+
+How to Use
+Clone the Repository:
+
+Bash
+git clone https://github.com/YourUsername/Pulmonary-Disease-Detection-DL.git
+Install Dependencies:
+
+Bash
+pip install -r requirements.txt
+Run the Notebook: Open notebooks/pulmonary_detection.ipynb in Kaggle or your local Jupyter environment.
+
+Result :-
+
