@@ -1,0 +1,20 @@
+Large-scale public chest X-ray dataset curated by the NIH Clinical Center for medical imaging research. 
+Contains 112,120 frontal-view chest X-ray images in PNG format.
+Images are sourced from 30,805 unique patients. 
+Each image is annotated with up to 14 common thoracic disease labels using natural language processing (NLP) of radiology reports. 
+Multi-label dataset:
+              A single X-ray can have multiple disease labels.
+              Also includes the “No Finding” (normal) class. 
+Typical disease labels include Atelectasis, Cardiomegaly, Consolidation, Edema, Effusion, Emphysema, Fibrosis, Hernia, Infiltration, Mass, Nodule, Pleural Thickening, Pneumonia, Pneumothorax.
+Images are usually ~1024 × 1024 pixels, allowing detailed feature extraction.
+Comes with metadata such as:
+               Patient ID
+               Age
+               Gender
+               View position (PA/AP) 
+Widely used for:
+               Multi-label disease classification
+               Model benchmarking
+               Automated detection research in deep learning
+
+Dataset link : -  https://www.kaggle.com/datasets/nih-chest-xrays/data
